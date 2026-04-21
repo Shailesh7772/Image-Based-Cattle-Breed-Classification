@@ -1,107 +1,87 @@
-# Welcome to your Lovable project
+# Image-Based Cattle Breed Classification
 
-## Project info
+AI-powered web app to classify cattle breeds from images, view breed insights, and generate structured Bharat Pashudhan submission payloads.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Features
 
-## How can I edit this code?
+- Image upload and camera capture for breed classification
+- Prediction dashboard with confidence and top predictions
+- Breed details (origin, milk yield, horn type, usage, etc.)
+- Bharat Pashudhan integration page with:
+  - JSON payload generation and download
+  - Payload copy to clipboard
+  - Optional deep-link launch
+  - Optional API submit flow
+  - Local submission history (reuse/copy/download previous payloads)
 
-There are several ways of editing your application.
+## Tech Stack
 
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-## Bharath Pashudhan integration setup
-
-The app supports both:
-- Deep-link opening (`Open Deep Link`)
-- Direct API submit (`Submit to API`)
-
-Add these variables in `.env`:
-
-```sh
-VITE_BHARATH_PASHUDHAN_DEEP_LINK="https://provider-domain/path"
-VITE_BHARATH_PASHUDHAN_API_URL="https://provider-domain/api/submissions"
-VITE_BHARATH_PASHUDHAN_API_KEY="your-api-key-if-required"
-```
-
-Then restart the dev server:
-
-```sh
-npm run dev
-```
-
-### Steps to get API details from Bharat Pashudhan provider
-
-1. Request API onboarding from Bharat Pashudhan tech/support team.
-2. Ask for:
-   - Base API URL for production (and sandbox if available)
-   - Submission endpoint path and method (usually `POST`)
-   - Auth type (`Bearer token`, API key header, OAuth, etc.)
-   - Required payload schema and sample request/response
-   - Error codes and rate limits
-3. Put the received values into `.env`.
-4. Test by classifying an image and using `Submit to API` on the Bharath Pashudhan page.
-
-If their auth/header format is not `Authorization: Bearer <token>`, update `src/lib/bharathPashudhan.ts` accordingly.
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
+- React + TypeScript
 - Vite
-- TypeScript
-- React
-- shadcn-ui
 - Tailwind CSS
+- shadcn/ui
+- Framer Motion
 
-## How can I deploy this project?
+## Getting Started
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+### Prerequisites
 
-## Can I connect a custom domain to my Lovable project?
+- Node.js 18+ (recommended: latest LTS)
+- npm
 
-Yes, you can!
+### Installation
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+```sh
+git clone https://github.com/Shailesh7772/Image-Based-Cattle-Breed-Classification.git
+cd Image-Based-Cattle-Breed-Classification
+npm install
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+### Run in Development
+
+```sh
+npm run dev
+```
+
+Open the local URL shown in terminal (usually `http://localhost:8080`).
+
+### Production Build
+
+```sh
+npm run build
+npm run preview
+```
+
+## Environment Variables
+
+Create or update `.env` in the project root:
+
+```sh
+VITE_SUPABASE_PROJECT_ID=""
+VITE_SUPABASE_PUBLISHABLE_KEY=""
+VITE_SUPABASE_URL=""
+
+VITE_BHARATH_PASHUDHAN_DEEP_LINK=""
+VITE_BHARATH_PASHUDHAN_API_URL=""
+VITE_BHARATH_PASHUDHAN_API_KEY=""
+```
+
+### Bharat Pashudhan Notes
+
+- If `VITE_BHARATH_PASHUDHAN_DEEP_LINK` is set, the app enables **Open Deep Link**.
+- If `VITE_BHARATH_PASHUDHAN_API_URL` is set, the app enables **Submit to API**.
+- Current API auth uses `Authorization: Bearer <API_KEY>`.  
+  If your provider requires different headers, update `src/lib/bharathPashudhan.ts`.
+
+## Project Scripts
+
+- `npm run dev` - start development server
+- `npm run build` - production build
+- `npm run preview` - preview production build
+- `npm run lint` - run ESLint
+- `npm run test` - run tests once
+- `npm run test:watch` - run tests in watch mode
+
+## Repository
+
+GitHub: [Shailesh7772/Image-Based-Cattle-Breed-Classification](https://github.com/Shailesh7772/Image-Based-Cattle-Breed-Classification)
