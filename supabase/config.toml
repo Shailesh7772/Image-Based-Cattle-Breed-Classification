@@ -1,0 +1,4 @@
+project_id = "liockpfleywrazholwzc"
+
+[functions.classify-breed]
+verify_jwt = false
